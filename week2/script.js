@@ -13,6 +13,7 @@ async function fetchData() {
         }
         const data = await response.json();
         dataContainer.innerHTML = '';
+
         data.forEach(user => {
             const userDiv = document.createElement('div')
             userDiv.innerHTML = `Name: <strong>${user.name}</strong> Email: <strong>${user.email}</strong>`;
