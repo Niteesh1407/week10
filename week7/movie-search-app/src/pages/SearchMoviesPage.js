@@ -1,4 +1,3 @@
-// src/pages/SearchMoviesPage.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +7,7 @@ const SearchMoviesPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_KEY = '9249c2c2'; // Replace with your OMDb API key
+  const API_KEY = '9249c2c2'; 
 
   const handleSearch = (e) => {
     e.preventDefault();

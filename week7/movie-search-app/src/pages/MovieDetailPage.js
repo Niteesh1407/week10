@@ -1,4 +1,3 @@
-// src/pages/MovieDetailPage.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './MovieDetailPage.css';
@@ -9,7 +8,7 @@ const MovieDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_KEY = '9249c2c2'; // Replace with your OMDb API key
+  const API_KEY = '9249c2c2'; 
 
   useEffect(() => {
     fetch(`http://www.omdbapi.com/?i=${id}&apikey=${API_KEY}`)
