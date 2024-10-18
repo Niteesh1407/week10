@@ -1,0 +1,287 @@
+/* General styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; /* Center all content */
+}
+
+h1, h2 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+
+/* Search form */
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; /* Stack input and button vertically */
+  align-items: center;
+  margin: 30px 0;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  border: 2px solid #2980b9;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+input[type="text"]:focus {
+  border-color: #1abc9c;
+}
+
+button {
+  padding: 15px 25px;
+  background-color: #1abc9c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+}
+
+button:hover {
+  background-color: #16a085;
+}
+
+/* Movie list styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  text-align: center; /* Center list items */
+}
+
+ul li:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2980b9;
+}
+
+ul li a:hover {
+  color: #1abc9c;
+}
+
+ul li span {
+  display: block;
+  margin-top: 5px;
+  color: #7f8c8d;
+}
+
+/* Movie detail page */
+.movie-details {
+  display: flex;
+  justify-content: center; /* Center the movie details container */
+  align-items: center;
+  margin-top: 30px;
+  flex-wrap: wrap; /* Wrap elements if screen size is too small */
+  gap: 30px;
+}
+
+.movie-details img {
+  max-width: 300px; /* Limit the image size for better scaling */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-info {
+  flex: 1;
+  max-width: 600px;
+  text-align: center; /* Center movie details text */
+}
+
+.movie-info h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.movie-info p {
+  line-height: 1.6;
+  color: #34495e;
+  font-size: 18px;
+}
+
+.movie-info p strong {
+  font-weight: bold;
+}
+
+.movie-info .meta-info {
+  margin-top: 20px;
+}
+
+.movie-info .meta-info span {
+  display: block;
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+/* Loading & error states */
+.loading, .error {
+  text-align: center;
+  font-size: 20px;
+  color: #e74c3c;
+  margin-top: 20px;
+}
+
+.loading {
+  color: #2980b9;
+}
+
+/* Centered Buttons */
+.add-to-favorites-btn {
+  background-color: #1abc9c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.add-to-favorites-btn:hover {
+  background-color: #16a085;
+}
+
+/* Favorites button styling */
+ul li button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+ul li button:hover {
+  background-color: #c0392b;
+}
+
+/* Navbar styling */
+nav {
+  background-color: #2980b9; /* Darker blue background */
+  padding: 15px 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center; /* Center navbar links */
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  color: white; /* Ensure navbar text is visible */
+  background-color: #3498db; /* Button-like background color */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 30px; /* Rounded buttons */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for a button effect */
+}
+
+nav ul li a:hover {
+  background-color: #1abc9c; /* Change background on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+/* Active button style */
+nav ul li a.active {
+  background-color: #1abc9c; /* Active state background */
+  color: white;
+}
+
+/* Favorites page styling */
+ul.favorites {
+  list-style: none;
+  padding: 0;
+}
+
+ul.favorites li {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space between title and button */
+  align-items: center; /* Vertically center items */
+}
+
+ul.favorites li:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+ul.favorites li span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+ul.favorites li button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 14px;
+}
+
+ul.favorites li button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+ul.favorites li button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.3);
+}
+

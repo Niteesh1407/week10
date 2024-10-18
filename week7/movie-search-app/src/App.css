@@ -1,0 +1,191 @@
+/* src/App.css */
+
+/* General styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #2c3e50;
+}
+
+/* Navbar styling */
+nav {
+  background-color: #2980b9;
+  padding: 15px 20px;
+}
+
+
+/* Search form */
+form {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  border: 2px solid #2980b9;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #1abc9c;
+}
+
+button {
+  padding: 15px 25px;
+  background-color: #1abc9c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #16a085;
+}
+
+/* Movie list styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+ul li:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2980b9;
+}
+
+ul li a:hover {
+  color: #1abc9c;
+}
+
+ul li span {
+  display: block;
+  margin-top: 5px;
+  color: #7f8c8d;
+}
+
+/* Movie detail page */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.movie-details img {
+  max-width: 300px;
+  margin-right: 40px;
+}
+
+.movie-info {
+  max-width: 700px;
+}
+
+.movie-info h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.movie-info p {
+  line-height: 1.6;
+  color: #34495e;
+  font-size: 18px;
+}
+
+.movie-info p strong {
+  font-weight: bold;
+}
+
+.movie-info .meta-info {
+  margin-top: 20px;
+}
+
+.movie-info .meta-info span {
+  display: block;
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+/* Loading & error states */
+.loading, .error {
+  text-align: center;
+  font-size: 20px;
+  color: #e74c3c;
+  margin-top: 20px;
+}
+
+.loading {
+  color: #2980b9;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+ul li button:hover {
+  background-color: #c0392b;
+}

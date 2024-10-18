@@ -1,4 +1,3 @@
-// src/components/ThemeSwitcher.js
 import React, { useContext } from 'react';
 import ThemeContext from '../context/ThemeContext';
 import { Button } from './StyledComponents';

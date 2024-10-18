@@ -1,4 +1,3 @@
-// src/components/StyledComponents.js
 import styled from 'styled-components';
 
 export const InputButtonContainer = styled.div`

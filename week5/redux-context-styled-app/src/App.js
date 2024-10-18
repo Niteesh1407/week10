@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import TaskList from './components/TaskList';
