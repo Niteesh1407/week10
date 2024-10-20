@@ -1,3 +1,4 @@
+// src/pages/FavoritesPage.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -5,7 +6,7 @@ const FavoritesPage = () => {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    // Fetch the favorites from localStorage
+    
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(storedFavorites);
   }, []);

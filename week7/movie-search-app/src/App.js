@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import SearchMoviesPage from './pages/SearchMoviesPage';
 import MovieDetailPage from './pages/MovieDetailPage';
-import FavoritesPage from './pages/FavoritesPage'; // 
+import FavoritesPage from './pages/FavoritesPage'; 
 
 function App() {
   return (
