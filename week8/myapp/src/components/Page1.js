@@ -21,7 +21,7 @@ const Page1 = () => {
   }, []);
 
   const fetchProducts = async () => {
-    const response = await axios.get(`https://dummyjson.com/products`);
+    const response = await axios.get('https://dummyjson.com/products');
     setProducts(response.data.products);
   };
 
