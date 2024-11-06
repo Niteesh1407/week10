@@ -2,10 +2,11 @@ import React from 'react';
 import { Button, Card } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
+import { useProductContext } from './ProductContext';
 import './Page2.css';
 
-const addProduct = async (product) => {
+const addProductApi = async (product) => {
   const { data } = await axios.post('https://dummyjson.com/products/add', product);
   return data;
 };
@@ -14,15 +15,11 @@ const Page2 = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const product = state?.product;
-  const queryClient = useQueryClient();
+  const { addProduct } = useProductContext();
 
-  const mutation = useMutation(addProduct, {
+  const mutation = useMutation(addProductApi, {
     onSuccess: (newProduct) => {
-      queryClient.setQueryData('products', (oldProducts) => {
-        if (!oldProducts) return [newProduct]; 
-        return [...oldProducts, newProduct];
-      });
-      queryClient.invalidateQueries('products');
+      addProduct(newProduct); // Update context with the new product
       alert('Product added successfully!');
       navigate('/');
     },

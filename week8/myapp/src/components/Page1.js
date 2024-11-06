@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
-import { DatePicker, Input, Button, Table, Modal, Form, InputNumber, message } from 'antd';
+import React, { useState, useMemo } from 'react';
+import { DatePicker, Input, Button, Table, Modal, Form, InputNumber} from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from 'react-query';
-import axios from 'axios';
+import { useProductContext } from './ProductContext';
 import './Page1.css';
 
 const { RangePicker } = DatePicker;
-
-const fetchProducts = async () => {
-  const { data } = await axios.get('https://dummyjson.com/products');
-  return data.products;
-};
 
 const Page1 = () => {
   const [dates, setDates] = useState([dayjs().subtract(7, 'days'), dayjs()]);
@@ -20,28 +14,11 @@ const Page1 = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState(null);
 
-  const { data: products } = useQuery('products', fetchProducts);
-
-  const handleSearch = () => {
-    if (!searchTerm.trim()) {
-      message.warning("Please enter something to search.");
-      return;
-    }
-    const filtered = products?.filter((product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredProducts(filtered);
-  };
+  const { products } = useProductContext();
 
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
-
-    if (value.trim() === '') {
-      setFilteredProducts(null);
-    }
+    setSearchTerm(e.target.value);
   };
 
   const openModal = () => setIsModalOpen(true);
@@ -51,6 +28,13 @@ const Page1 = () => {
     closeModal();
     navigate('/confirmation', { state: { product: values } });
   };
+
+  const filteredProducts = useMemo(() => {
+    if (!searchTerm.trim()) return products;
+    return products?.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [products, searchTerm]);
 
   const columns = [
     { title: 'ID', dataIndex: 'id', key: 'id' },
@@ -80,7 +64,6 @@ const Page1 = () => {
           <Button
             type="primary"
             icon={<SearchOutlined />}
-            onClick={handleSearch}
             style={{ borderRadius: '0 5px 5px 0' }}
           />
         </Input.Group>
@@ -91,7 +74,7 @@ const Page1 = () => {
       </div>
 
       <div className="table-container">
-        <Table dataSource={filteredProducts || products} columns={columns} rowKey="id" />
+        <Table dataSource={filteredProducts} columns={columns} rowKey="id" />
       </div>
 
       <Modal

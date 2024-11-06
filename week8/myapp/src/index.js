@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import App from './App';  // Assuming App is your main component
+import { ProductProvider } from './components/ProductContext';
 
-// Initialize the Query Client
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
+  <QueryClientProvider client={queryClient}>
+    <ProductProvider>
       <App />
-    </QueryClientProvider>
-  </React.StrictMode>,
+    </ProductProvider>
+  </QueryClientProvider>,
   document.getElementById('root')
 );
