@@ -2,19 +2,39 @@ import React from 'react';
 import { Button, Card } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useMutation, useQueryClient } from 'react-query';
 import './Page2.css';
+
+const addProduct = async (product) => {
+  const { data } = await axios.post('https://dummyjson.com/products/add', product);
+  return data;
+};
 
 const Page2 = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const product = state?.product;
+  const queryClient = useQueryClient();
 
-  const handleConfirm = async () => {
+  const mutation = useMutation(addProduct, {
+    onSuccess: (newProduct) => {
+      queryClient.setQueryData('products', (oldProducts) => {
+        if (!oldProducts) return [newProduct]; 
+        return [...oldProducts, newProduct];
+      });
+      queryClient.invalidateQueries('products');
+      alert('Product added successfully!');
+      navigate('/');
+    },
+    onError: () => {
+      alert('Failed to add product.');
+    },
+  });
+
+  const handleConfirm = () => {
     if (product) {
-        await axios.post('https://dummyjson.com/products/add', product);
-        alert('Product added successfully!');
-        navigate('/');
-      }
+      mutation.mutate(product);
+    }
   };
 
   if (!product) {

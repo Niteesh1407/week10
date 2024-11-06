@@ -1,39 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { DatePicker, Input, Button, Table, Modal, Form, InputNumber, message } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 import './Page1.css';
 
 const { RangePicker } = DatePicker;
 
+const fetchProducts = async () => {
+  const { data } = await axios.get('https://dummyjson.com/products');
+  return data.products;
+};
+
 const Page1 = () => {
   const [dates, setDates] = useState([dayjs().subtract(7, 'days'), dayjs()]);
-  const [products, setProducts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState(null);
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    const response = await axios.get('https://dummyjson.com/products');
-    setProducts(response.data.products);
-  };
+  const { data: products } = useQuery('products', fetchProducts);
 
   const handleSearch = () => {
     if (!searchTerm.trim()) {
       message.warning("Please enter something to search.");
       return;
     }
-    const filteredProducts = products.filter((product) =>
+    const filtered = products?.filter((product) =>
       product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setProducts(filteredProducts);
+    setFilteredProducts(filtered);
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (value.trim() === '') {
+      setFilteredProducts(null);
+    }
   };
 
   const openModal = () => setIsModalOpen(true);
@@ -66,7 +74,7 @@ const Page1 = () => {
           <Input
             placeholder="Search products"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleInputChange}
             style={{ width: 250, borderRadius: '5px 0 0 5px' }}
           />
           <Button
@@ -83,7 +91,7 @@ const Page1 = () => {
       </div>
 
       <div className="table-container">
-        <Table dataSource={products} columns={columns} rowKey="id" />
+        <Table dataSource={filteredProducts || products} columns={columns} rowKey="id" />
       </div>
 
       <Modal
@@ -106,7 +114,7 @@ const Page1 = () => {
             Submit
           </Button>
         </Form>
-      </Modal>
+      </Modal> 
     </div>
   );
 };
