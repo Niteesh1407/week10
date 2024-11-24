@@ -1,0 +1,56 @@
+
+.page-container {
+  padding: 24px;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.custom-search-bar {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.custom-search-bar .ant-input {
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  height: 33px;
+}
+
+.custom-search-bar .ant-btn-primary {
+  border-radius: 0 5px 5px 0;
+  height: 33px;
+}
+
+.table-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-form .ant-form-item {
+  margin-bottom: 12px;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+}
