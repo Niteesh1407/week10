@@ -1,30 +1,32 @@
-package com.Ennea.demo.service;
-
-import com.Ennea.demo.entity.Product;
-import com.Ennea.demo.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.example.demo.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Product;
+import com.example.demo.repository.Productrepo;
 @Service
 public class ProductService {
     @Autowired
-    private ProductRepository productRepository;
-
+    private Productrepo repo;
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return repo.findAll();
     }
-
-    public Product getProductById(Long id) {
-        return productRepository.findById(id).orElse(null);
-    }
-
     public Product addProduct(Product product) {
-        return productRepository.save(product);
+        return repo.save(product);
     }
-
-    public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+    public Product getProductById(int prodid) {
+        return repo.findById(prodid).get();
+    }
+    public void updateProduct(Product prod) {
+        repo.save(prod);
+    }
+    public void deleteProduct(int prodid) {
+        repo.deleteById(prodid);
+    }
+    public List<Product> searchProducts(String keyword) {
+        return repo.searchProducts(keyword);
     }
 }
