@@ -10,24 +10,14 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
-        const response = await axios.get('http://localhost:8081/products'); 
-        setProducts(response.data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
+      const { data } = await axios.get('http://localhost:8081/products');
+      setProducts(data);
     };
-
     fetchProducts();
   }, []);
 
-  const addProduct = async (newProduct) => {
-    try {
-      const response = await axios.post('http://localhost:8080/api/products', newProduct); // Backend API endpoint
-      setProducts((prevProducts) => [...prevProducts, response.data]);
-    } catch (error) {
-      console.error('Error adding product:', error);
-    }
+  const addProduct = (newProduct) => {
+    setProducts((prevProducts) => [...prevProducts, newProduct]);
   };
 
   return (

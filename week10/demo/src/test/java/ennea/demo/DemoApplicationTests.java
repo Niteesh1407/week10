@@ -1,10 +1,10 @@
-package com.Ennea.demo;
+package ennea.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProductAppApplicationTests {
+class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {

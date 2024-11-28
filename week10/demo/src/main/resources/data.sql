@@ -1,4 +1,4 @@
-insert into product(title, price)
+insert into Product(title, price)
 values
     ('camera', 850),
     ('t-shirt', 25),
